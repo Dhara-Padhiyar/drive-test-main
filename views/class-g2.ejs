@@ -1,0 +1,175 @@
+<!-- Import Header -->
+<%- include('components/header.ejs') %>
+
+<!-- Body content -->
+<div class="container">
+  <h1 class="mb-4">Class G2</h1>
+
+  <form>
+    <!-- User Profile Section -->
+    <fieldset class="border p-3 mb-3 user-profile">
+      <legend class="w-auto">User Profile</legend>
+
+      <div class="mb-3">
+        <label for="firstName" class="form-label">First Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="firstName"
+          placeholder="Enter first name"
+          value="<%= user.firstName %>"
+          disabled />
+        <p id="firstName_error" class="error-message"></p>
+      </div>
+
+      <div class="mb-3">
+        <label for="lastName" class="form-label">Last Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="lastName"
+          placeholder="Enter last name"
+          value="<%= user.lastName %>"
+          disabled />
+        <p id="lastName_error" class="error-message"></p>
+      </div>
+
+      <div class="mb-3">
+        <label for="licenseNumber" class="form-label">License Number (13 characters)</label>
+        <input
+          type="text"
+          class="form-control"
+          id="licenseNumber"
+          placeholder="Enter license number (13 characters)"
+          pattern="[A-Za-z0-9]{13}"
+          value="<%= user.licenseNumber %>"
+          disabled />
+        <p id="licenseNumber_error" class="error-message"></p>
+      </div>
+
+      <div class="mb-3">
+        <label for="age" class="form-label">Age</label>
+        <input
+          type="number"
+          class="form-control"
+          id="age"
+          placeholder="Enter age"
+          value="<%= user.age %>"
+          disabled />
+        <p id="age_error" class="error-message"></p>
+      </div>
+
+      <div class="mb-3">
+        <label for="dob" class="form-label">Date of Birth</label>
+        <input type="date" class="form-control" id="dob" value="<%= user.userDOB %>" disabled />
+        <p id="dob_error" class="error-message"></p>
+      </div>
+    </fieldset>
+
+    <!-- Car Information Section -->
+    <fieldset class="border p-3 mb-3">
+      <legend class="w-auto">Car Information</legend>
+
+      <div class="mb-3">
+        <label for="carMake" class="form-label">Car Make</label>
+        <input
+          type="text"
+          class="form-control"
+          id="carMake"
+          placeholder="Enter car make"
+          value="<%= user.car_details.make %>" />
+        <p id="carMake_error" class="error-message"></p>
+      </div>
+
+      <div class="mb-3">
+        <label for="carModel" class="form-label">Car Model</label>
+        <input
+          type="text"
+          class="form-control"
+          id="carModel"
+          placeholder="Enter car model"
+          value="<%= user.car_details.model %>" />
+        <p id="carModel_error" class="error-message"></p>
+      </div>
+
+      <div class="mb-3">
+        <label for="carYear" class="form-label">Car Year</label>
+        <input
+          type="number"
+          class="form-control"
+          id="carYear"
+          placeholder="Enter car year"
+          value="<%= user.car_details.year %>" />
+        <p id="carYear_error" class="error-message"></p>
+      </div>
+
+      <div class="mb-3">
+        <label for="plateNumber" class="form-label">Plate Number</label>
+        <input
+          type="text"
+          class="form-control"
+          id="plateNumber"
+          placeholder="Enter plate number"
+          value="<%= user.car_details.plateNumber %>" />
+        <p id="plateNumber_error" class="error-message"></p>
+      </div>
+    </fieldset>
+
+    <button type="button" id="g2-form" class="btn btn-primary mt-2 mb-2">Submit</button>
+  </form>
+
+  <% if(user.appointment){ %>
+  <div class="appointment-booked">
+    <h5>Your appointment is booked for</h5>
+    <h6><%= user.appointment.userAppointmentDate %></h6>
+    <h6><%= user.appointment.time %></h6>
+  </div>
+  <% } else { %>
+  <div class="container book-date">
+    <h4 class="mb-4 text-center">Book Available Appointment Slot</h4>
+    <div class="row create-slot">
+      <div class="col-8">
+        <label>Select Date:</label>
+        <input type="text" id="datepicker" />
+      </div>
+      <div class="col-4">
+        <button id="search-appointment-date" class="btn btn-secondary">Search</button>
+      </div>
+    </div>
+
+    <div class="available-slots">
+      <h4 class="mb-4 mt-4 text-center">Slots for <span id="slot-date"></span></h4>
+
+      <div class="slots">
+        <div class="card slot-available slot-card display-none" id="09:00">09:00</div>
+        <div class="card slot-available slot-card display-none" id="09:30">09:30</div>
+        <div class="card slot-available slot-card display-none" id="10:00">10:00</div>
+        <div class="card slot-available slot-card display-none" id="10:30">10:30</div>
+        <div class="card slot-available slot-card display-none" id="11:00">11:00</div>
+        <div class="card slot-available slot-card display-none" id="11:30">11:30</div>
+        <div class="card slot-available slot-card display-none" id="12:00">12:00</div>
+        <div class="card slot-available slot-card display-none" id="12:30">12:30</div>
+        <div class="card slot-available slot-card display-none" id="13:00">13:00</div>
+        <div class="card slot-available slot-card display-none" id="13:30">13:30</div>
+        <div class="card slot-available slot-card display-none" id="14:00">14:00</div>
+      </div>
+
+      <h2 class="no-slots display-none">No Slots available for the selected day</h2>
+
+      <div class="date-time-selected">
+        <hr />
+        <h6 class="mb-3">Please confirm your details to book this slot for G Test</h6>
+        <p>Date Selected: <span id="selected-date"></span></p>
+        <p>Time Selected: <span id="selected-time"></span></p>
+        <div class="text-center">
+          <button id="book-slot" class="btn btn-primary">Book Slot</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% } %>
+</div>
+
+<script src="./js/class-g2.js"></script>
+<!-- Import Footer -->
+<%- include('components/footer.ejs') %>

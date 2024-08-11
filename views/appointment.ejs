@@ -1,0 +1,58 @@
+<!-- Import Header -->
+<%- include('components/header.ejs') %>
+
+<!-- Body content -->
+<div>
+  <!-- Cover -->
+  <div class="home-cover">
+    <h1 class="display-4 fw-bold">Appointment</h1>
+    <p class="lead mb-4">Drive Test Booking Kiosk</p>
+  </div>
+
+  <div class="container">
+    <h4 class="mb-4 text-center">Create Appointment Slot</h4>
+    <div class="row create-slot">
+      <div class="col-8">
+        <label>Select Date:</label>
+        <input type="text" id="datepicker" />
+      </div>
+      <div class="col-4">
+        <button id="search-appointment" class="btn btn-secondary">Search</button>
+      </div>
+    </div>
+    <div class="available-slots">
+      <h4 class="mb-4 mt-4 text-center">Slots for <span id="slot-date"></span></h4>
+
+      <div class="slots">
+        <div class="card slot-available slot-card" id="09:00">09:00</div>
+        <div class="card slot-available slot-card" id="09:30">09:30</div>
+        <div class="card slot-available slot-card" id="10:00">10:00</div>
+        <div class="card slot-available slot-card" id="10:30">10:30</div>
+        <div class="card slot-available slot-card" id="11:00">11:00</div>
+        <div class="card slot-available slot-card" id="11:30">11:30</div>
+        <div class="card slot-available slot-card" id="12:00">12:00</div>
+        <div class="card slot-available slot-card" id="12:30">12:30</div>
+        <div class="card slot-available slot-card" id="13:00">13:00</div>
+        <div class="card slot-available slot-card" id="13:30">13:30</div>
+        <div class="card slot-available slot-card" id="14:00">14:00</div>
+      </div>
+
+      <div class="date-time-selected">
+        <hr />
+        <h6 class="mb-3">Please confirm your details to create a slot</h6>
+        <p>Date Selected: <span id="selected-date"></span></p>
+        <p>Time Selected: <span id="selected-time"></span></p>
+        <div class="text-center">
+          <button id="create-slot" class="btn btn-primary">Create Slot</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Description -->
+</div>
+
+<script src="./js/appointment.js"></script>
+
+<!-- Import Footer -->
+<%- include('components/footer.ejs') %>

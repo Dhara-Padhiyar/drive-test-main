@@ -1,0 +1,59 @@
+<!-- Import Header -->
+<%- include('components/header.ejs') %>
+
+<!-- Examiner Dashboard Content -->
+<div class="container mt-5">
+  <h1>Examiner Dashboard</h1>
+
+  <!-- Appointment List -->
+  <div class="mb-4">
+    <h2>Upcoming Appointments</h2>
+    <div class="mb-3">
+      <label for="appointmentFilter" class="form-label">Filter by Test Type:</label>
+      <select class="form-control" id="appointmentFilter">
+        <option value="all">All</option>
+        <option value="G2">G2 Test</option>
+        <option value="G">G Test</option>
+      </select>
+    </div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Driver Name</th>
+          <th scope="col">Test Type</th>
+          <th scope="col">Date & Time</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody id="appointmentList">
+        <!-- Appointments will be dynamically populated here -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Driver Details Section -->
+  <div id="driverDetailsSection" class="d-none">
+    <h2>Driver Details</h2>
+    <p><strong>Name:</strong> <span id="driverName"></span></p>
+    <p><strong>Car Details:</strong> <span id="carDetails"></span></p>
+    <div class="mb-3">
+      <label for="examinerComments" class="form-label">Comments:</label>
+      <textarea class="form-control" id="examinerComments" rows="4"></textarea>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Test Result:</label>
+      <div>
+        <input type="radio" id="pass" name="testResult" value="Pass">
+        <label for="pass">Pass</label>
+        <input type="radio" id="fail" name="testResult" value="Fail">
+        <label for="fail">Fail</label>
+      </div>
+    </div>
+    <button class="btn btn-primary" id="submitResult">Submit</button>
+  </div>
+</div>
+
+<script src="./js/examiner.js"></script>
+
+<!-- Import Footer -->
+<%- include('components/footer.ejs') %>

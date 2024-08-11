@@ -1,0 +1,35 @@
+<!-- Import Header -->
+<%- include('components/header.ejs') %>
+
+<!-- Admin Dashboard Content -->
+<div class="container mt-5">
+  <h1>Admin Dashboard</h1>
+
+  <!-- Pass/Fail Candidates List -->
+  <div class="mb-4">
+    <h2>Pass/Fail Candidates</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Driver Name</th>
+          <th scope="col">Test Type</th>
+          <th scope="col">Pass/Fail Status</th>
+        </tr>
+      </thead>
+      <tbody id="candidateList">
+        <% candidates.forEach(candidate => { %>
+          <tr>
+            <td><%= candidate.name %></td>
+            <td><%= candidate.testType %></td>
+            <td><%= candidate.status %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script src="./js/admin.js"></script>
+
+<!-- Import Footer -->
+<%- include('components/footer.ejs') %>

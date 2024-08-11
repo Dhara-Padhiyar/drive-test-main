@@ -1,0 +1,107 @@
+body {
+  background-color: #ececec;
+}
+
+nav {
+  text-transform: uppercase;
+}
+
+.container-fluid {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.container {
+  background: white;
+  border-radius: 18px;
+  margin: 20px auto;
+  padding: 30px;
+}
+
+.home-cover {
+  display: flex;
+  height: 40svh;
+  background-color: darkgray;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-expand-lg .navbar-collapse {
+  flex-direction: row-reverse;
+}
+
+.home-cover {
+  display: flex;
+  flex-direction: column;
+}
+
+#gCarInfo,
+#gUserInfo {
+  visibility: hidden;
+}
+
+.fetch-cta-block {
+  display: flex;
+  align-items: flex-end;
+}
+
+.error-message {
+  color: red;
+}
+
+.create-slot {
+  align-items: center;
+}
+
+.available-slots {
+  display: none;
+}
+
+.display-none {
+  display: none;
+}
+
+.slots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.slot-card {
+  width: 150px;
+  text-align: center;
+  padding: 10px 0px;
+  cursor: pointer;
+  transition: 0.2s all;
+}
+
+.slot-available:hover {
+  background-color: #108fff;
+  color: white;
+}
+
+.date-time-selected {
+  display: none;
+  padding: 25px;
+}
+
+#selected-date,
+#selected-time {
+  font-weight: bold;
+}
+
+.slot-booked {
+  background-color: #cecece;
+  cursor: not-allowed;
+}
+
+.no-slots {
+  color: red;
+}
+
+.appointment-booked {
+  border: 2px solid green;
+  padding: 20px;
+  border-radius: 5px;
+}

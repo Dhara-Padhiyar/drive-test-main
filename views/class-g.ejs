@@ -1,0 +1,124 @@
+<!-- Import Header -->
+<%- include('components/header.ejs') %>
+
+<!-- Body content -->
+<div class="container">
+  <h1 class="mb-4">Class G</h1>
+
+  <div class="container mt-5">
+    <!-- Fetch Data with license number -->
+    <div class="row mb-5" style="display: none">
+      <div class="col-md-8">
+        <label for="inputLicenseNumber" class="form-label">License number</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputLicenseNumber"
+          value="<%= user.licenseNumber %>"
+          placeholder="Enter license number" />
+      </div>
+      <div class="col-md-4 fetch-cta-block">
+        <button type="button" id="fetchLicenseData" class="btn btn-primary" id="fetchDataButton">
+          Fetch Data
+        </button>
+      </div>
+    </div>
+
+    <!-- User Profile Section -->
+    <fieldset id="gUserInfo" class="border p-3 mb-3">
+      <legend class="w-auto">User Profile</legend>
+
+      <div class="mb-3 row">
+        <label for="firstName" class="col-sm-2 col-form-label">First Name</label>
+        <div class="col-sm-10">
+          <input type="text" readonly class="form-control-plaintext" id="firstName" />
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="lastName" class="col-sm-2 col-form-label">Last Name</label>
+        <div class="col-sm-10">
+          <input type="text" readonly class="form-control-plaintext" id="lastName" />
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="licenseNumber" class="col-sm-2 col-form-label">License Number</label>
+        <div class="col-sm-10">
+          <input type="text" readonly class="form-control-plaintext" id="licenseNumber" />
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="age" class="col-sm-2 col-form-label">Age</label>
+        <div class="col-sm-10">
+          <input type="number" readonly class="form-control-plaintext" id="age" />
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="dob" class="col-sm-2 col-form-label">Date of Birth</label>
+        <div class="col-sm-10">
+          <input type="text" readonly class="form-control-plaintext" id="dob" />
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- Car Information Section -->
+    <fieldset id="gCarInfo" class="border p-3 mb-3">
+      <legend class="w-auto">Car Information</legend>
+
+      <div class="mb-3 row">
+        <label for="carMake" class="col-sm-2 col-form-label">Car Make</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="make" />
+          <p id="make_error" class="error-message"></p>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="carModel" class="col-sm-2 col-form-label">Car Model</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="model" />
+          <p id="model_error" class="error-message"></p>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="carYear" class="col-sm-2 col-form-label">Car Year</label>
+        <div class="col-sm-10">
+          <input type="number" class="form-control" id="year" />
+          <p id="year_error" class="error-message"></p>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="plateNumber" class="col-sm-2 col-form-label">Plate Number</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="plateNumber" />
+          <p id="plateNumber_error" class="error-message"></p>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <div class="col-sm-10">
+          <button type="button" id="g-form-vehicle" class="btn btn-primary mt-2 mb-2">
+            Update Vehicle Details
+          </button>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+  <% if(user.appointment){ %>
+  <div class="appointment-booked">
+    <h5>Your appointment is booked for</h5>
+    <h6><%= user.appointment.userAppointmentDate %></h6>
+    <h6><%= user.appointment.time %></h6>
+  </div>
+  <% } %>
+</div>
+
+<script src="./js/class-g.js"></script>
+
+<!-- Import Footer -->
+<%- include('components/footer.ejs') %>
